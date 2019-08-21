@@ -26,7 +26,6 @@ const actions = {
     let result = await reqCommodityNav()
 
     const categoryArr = result.data.categoryL1List
-    console.log('请求先')
     if(result.code===0){
       commit(GET_CATEGORY_DATA,{categoryArr})
     }

@@ -6,11 +6,12 @@
         <i class="iconfont icondayufuhao"></i>
       </div>
     </HomeListHeader>
-    <div class="swiper-slideItem" v-for="(item, index) in pop" :key="index"> 
-      <img src="http://yanxuan.nosdn.127.net/85b9c081a3859fbff67a54f9222ad068.png"/>
+    <div class="swiper-slideItem" v-for="(item, index) in flashSaleModule.itemList" :key="index"> 
+      <img :src="item.picUrl"/>
       <div class="swipe_text">
-        <span>日本制造 24K金T型美容棒 </span>
-        <span class="jiage">¥459</span>
+        <span v-show="isShow">日本制造 24K金T型美容棒 </span>
+        <span class="jiage">¥{{item.activityPrice}}</span>
+        <del class="huadiao">¥{{item.originPrice}}</del>
       </div>
     </div>
   </div>
@@ -18,13 +19,20 @@
 
 <script type="text/ecmascript-6">
 import HomeListHeader from './HomeListHeader'
+import {mapState} from 'vuex'
   export default {
     data (){
       return {
         title:'限时购',
-        pop:['1','2','3','4','5','6']
+        isShow:false
       }
     },
+  computed:{
+    ...mapState({
+      flashSaleModule:state=>state.home.flashSaleModule
+    })
+  },
+    
     components:{
       HomeListHeader
     }
@@ -45,11 +53,19 @@ import HomeListHeader from './HomeListHeader'
       background-color #f5f5f5
     .swipe_text
       margin-top 0
+      display flex
+      align-items center
+      justify-content center
       margin-bottom 5px
       font-size 12px
       .jiage
-        font-size 11px
+        font-size 14px
         color #b4282d
+        margin-right 10px
+      .huadiao
+        font-size 11px
+        color black
+
       
   
   </style>

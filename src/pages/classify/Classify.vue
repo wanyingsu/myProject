@@ -1,7 +1,7 @@
 <template>
   <div id="sortContainer">
     <div class="sortHeader">
-      <div class="sortSearch">
+      <div class="sortSearch" @click="$router.replace('/search')">
         <i class="iconfont icon-fangdajing"></i>
         <span>搜索商品，共21615款好物</span> 
       </div>                
@@ -39,11 +39,11 @@ import {mapState} from 'vuex'
  
   mounted(){
     this.$store.dispatch("getCategoryData")
-    // new BScroll(this.$refs.categoryNav, {
-    //       click: true,
-    //       scrollX:false,
-    //       scrollY:true
-    //     })
+    new BScroll(this.$refs.categoryNav, {
+          click: true,
+          scrollX:false,
+          scrollY:true
+        })
   },
 
     methods:{
@@ -80,6 +80,8 @@ import {mapState} from 'vuex'
         color #666
   .sortContent
     padding-top 45px 
+    padding-bottom 50px
+    box-sizing border-box
     width 100%
     height 100%
     display flex

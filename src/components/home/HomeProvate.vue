@@ -3,75 +3,17 @@
         <HomeListHeader :title="title"/>
         <div class="swiper-container">
           <ul class="swiper-wrapper">
-            <li class="swiper-slide">
-              <div class="swiper-slideItem">
-                <img src="http://yanxuan.nosdn.127.net/85b9c081a3859fbff67a54f9222ad068.png"/>
+            <li class="swiper-slide" v-for="(personals, index) in personalArr" :key="index">
+              <div class="swiper-slideItem" v-for="(personal, index) in personals" :key="index">
+                <img :src="personal.scenePicUrl"/>
                 <div class="swipe_text">
-                  <span>日本制造 24K金T型美容棒 </span>
-                  <span class="jiage">¥459</span>
+                  <span>{{personal.name}} </span>
+                  <span class="jiage">¥{{personal.counterPrice}}</span>
                 </div>
               </div>
-              <div class="swiper-slideItem">
-                <img src="http://yanxuan.nosdn.127.net/38253e4bc864ded67fe49a34fcbf70b0.png"/>
-                <div class="swipe_text">
-                  <span>日本制造 24K金T型美容棒 </span>
-                  <span class="jiage">¥459</span>
-                </div>
-              </div>
-              <div class="swiper-slideItem">
-                <img src="http://yanxuan.nosdn.127.net/52b4876b561380e42ff5aa1342545523.png"/>
-                <div class="swipe_text">
-                  <span>日本制造 24K金T型美容棒 </span>
-                  <span class="jiage">¥459</span>
-                </div>
-              </div>
+              
             </li>
-            <li class="swiper-slide">
-              <div class="swiper-slideItem">
-                <img src="http://yanxuan.nosdn.127.net/4462d78e094d81c02278fdc02e4ddbfa.jpg"/>
-                <div class="swipe_text">
-                  <span>日本制造 24K金T型美容棒 </span>
-                  <span class="jiage">¥459</span>
-                </div>
-              </div>
-              <div class="swiper-slideItem">
-                <img src="http://yanxuan.nosdn.127.net/52b4876b561380e42ff5aa1342545523.png"/>
-                <div class="swipe_text">
-                  <span>日本制造 24K金T型美容棒 </span>
-                  <span class="jiage">¥459</span>
-                </div>
-              </div>
-              <div class="swiper-slideItem">
-                <img src="http://yanxuan.nosdn.127.net/72eb76506fb94adce584c74b930a6a92.png"/>
-                <div class="swipe_text">
-                  <span>日本制造 24K金T型美容棒 </span>
-                  <span class="jiage">¥459</span>
-                </div>
-              </div>
-            </li>
-            <li class="swiper-slide">
-              <div class="swiper-slideItem">
-                <img src="http://yanxuan.nosdn.127.net/85b9c081a3859fbff67a54f9222ad068.png"/>
-                <div class="swipe_text">
-                  <span>日本制造 24K金T型美容棒 </span>
-                  <span class="jiage">¥459</span>
-                </div>
-              </div>
-              <div class="swiper-slideItem">
-                <img src="http://yanxuan.nosdn.127.net/38253e4bc864ded67fe49a34fcbf70b0.png"/>
-                <div class="swipe_text">
-                  <span>日本制造 24K金T型美容棒 </span>
-                  <span class="jiage">¥459</span>
-                </div>
-              </div>
-              <div class="swiper-slideItem">
-                <img src="http://yanxuan.nosdn.127.net/52b4876b561380e42ff5aa1342545523.png"/>
-                <div class="swipe_text">
-                  <span>日本制造 24K金T型美容棒 </span>
-                  <span class="jiage">¥459</span>
-                </div>
-              </div>
-            </li>
+            
           </ul>
           <!-- 如果需要分页器 -->
           <div class="swiper-pagination"></div>
@@ -80,6 +22,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import {mapState} from 'vuex'
 import HomeListHeader from './HomeListHeader'
 import Swiper from 'swiper'
 import 'swiper/dist/css/swiper.css'
@@ -90,13 +33,35 @@ import 'swiper/dist/css/swiper.css'
       }
     },
 
-
+    computed:{
+      ...mapState({
+        personalShop:state=>state.home.personalShop
+      }),
+      personalArr(){
+        const bigArr = []
+        let smallArr = []
+        const {personalShop} = this
+        personalShop.forEach(item => {
+          if(smallArr.length===0){
+            bigArr.push(smallArr)
+          }
+          smallArr.push(item)
+          if(smallArr.length===3){
+            smallArr=[]
+          }
+        });
+        // console.log(bigArr,"0000000000")
+        return bigArr
+      }
+    },
     components:{
       HomeListHeader
     },
 
 
     mounted() {
+      // console.log(this.personalShop)
+
       new Swiper('.swiper-container', {
         loop: true, // 循环模式
         // 如果需要分页器

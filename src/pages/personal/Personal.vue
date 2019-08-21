@@ -1,12 +1,5 @@
 <template>
-  <div class="personContainer">
-    <!-- <header class="header">
-      <i class="iconfont icon-shouye"></i>
-      <div>
-        <i class="iconfont icon-fangdajing magnifier"></i>
-        <i class="iconfont icon-gouwuche"></i>
-      </div>      
-    </header> -->
+  <div class="personContainer">  
     <Header>
       <div slot="find" class="wangyi">网易严选</div>
     </Header>
@@ -14,8 +7,8 @@
       <img src="//yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" class="logo" />
     </div>
     <div class="text">
-      <button class="phone">手机号快捷登录</button>
-      <button class="email">邮箱账号登录</button>
+      <button class="phone" @click="$router.replace('/phonelogin')">手机号快捷登录</button>
+      <button class="email" @click="$router.replace('/emaillogin')">邮箱账号登录</button>
     </div>
     <div class="copy">
       <div class="container">

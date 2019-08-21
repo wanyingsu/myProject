@@ -35,7 +35,6 @@ const mutations = {
     state.popularItemList = popularItemList
     state.topicList = topicList
     state.zhongChouList = zhongChouList
-
   }
 
 }

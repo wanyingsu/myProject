@@ -12,18 +12,24 @@ const prefix = '/api'
    }
  })
 
+//关键字搜索
+ export const reqSearch = (data) => ajax.get(
+   `${prefix}/xhr/search/searchAutoComplete.json?keywordPrefix=${data}`
+ )
+
  //发送请求获取商品导航列表
  export const reqCommodityNav = () => ajax('/mock/category')
 
-//  reqCommodityNav().then((result)=>{
+//home组件的请求
+ export const reqHomeList = () => ajax('/mock/home')
+
+//搜索页默认显示
+export const reqDefalut = ()=>ajax(`${prefix}/xhr/search/init.json`)
+
+// reqDefalut().then(result=>{
+//   console.log(result)
+// })
+//  reqComment({page:1,size:5}).then((result)=>{
 //     console.log(result)
 //  })
-
-
-//home组件的请求
- export const reqHomeList = ( ) => ajax('/mock/home')
-
- reqComment({page:1,size:5}).then((result)=>{
-    console.log(result)
- })
   

@@ -1,42 +1,24 @@
 <template>
   <ul class="home_shopList">
-    <li class="home_shopItem">
-      <p class="home_shop_top">实时好评榜</p>
-      <p class="home_shop_center">精选优质好物</p>
+    <li class="home_shopItem" v-for="(Shop, index) in Shopping" :key="index">
+      <p class="home_shop_top">{{Shop.styleItem.title}}</p>
+      <p class="home_shop_center">{{Shop.styleItem.desc}}</p>
       <div class="home_shopImgContainer">
-        <img src="http://yanxuan.nosdn.127.net/e4092e675f895740f8e079980e8ebe63.png"/>
-        <img src="http://yanxuan.nosdn.127.net/6725890e905c4d51e333485f3a934192.png"/>
+        <img :src="Shop.styleItem.picUrlList[0]"/>
+        <img :src="Shop.styleItem.picUrlList[1]"/>
       </div>
-    </li>
-    <li class="home_shopItem">
-      <p>实时好评榜</p>
-      <p>精选优质好物</p>
-      <div class="home_shopImgContainer">
-        <img src="http://yanxuan.nosdn.127.net/780b2fc0c98fac7b2862a8a111ee615f.png"/>
-        <img src="http://yanxuan.nosdn.127.net/77bf1ff658f8557391f1b3204cb8ab3b.png"/>
-      </div>
-    </li>
-    <li class="home_shopItem">
-      <p>实时好评榜</p>
-      <p>精选优质好物</p>
-      <div class="home_shopImgContainer">
-        <img src="http://yanxuan.nosdn.127.net/a07c82f8b26a4ed42b1d697eb9ea418f.png"/>
-        <img src="http://yanxuan.nosdn.127.net/d1d2488296c5e75967ebfbdf8a36d6cc.png"/>
-      </div>
-    </li>
-    <li class="home_shopItem">
-      <p>实时好评榜</p>
-      <p>精选优质好物</p>
-      <div class="home_shopImgContainer">
-        <img src="http://yanxuan.nosdn.127.net/362a8249b48d91d99604680b5471b507.png"/>
-        <img src="http://yanxuan.nosdn.127.net/e1d2f0b529eddc9b645997d0f16e9aca.png"/>
-      </div>
-    </li>
+    </li>    
   </ul>
 </template>
 
 <script type="text/ecmascript-6">
+import {mapState} from 'vuex'
   export default {
+    computed:{
+      ...mapState({
+        Shopping:state=>state.home.Shopping
+      })
+    }
   }
 </script>
 

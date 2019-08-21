@@ -3,7 +3,7 @@
     <div class="header">
       <img class="header_logo" src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/indexLogo-a90bdaae6b.png"/>
       <!-- <input class="header_search" type="text" placeholder="搜索商品，共有234232件商品"/> -->
-      <div class="header_search">
+      <div class="header_search" @click="$router.replace('/search')">
         <i class="iconfont iconsearch3"></i>
         <span>搜索商品,共21612款好物</span>
       </div>
@@ -24,7 +24,7 @@ import BScroll from 'better-scroll'
   export default {
     data() {
       return {
-        isIndex: '推荐',
+        isIndex: 0,
         labels: ['推荐','居家生活','服饰鞋包','美食酒水','个户清洁','母婴亲子','运动旅行','数码家电','礼品特色']
       }
     },

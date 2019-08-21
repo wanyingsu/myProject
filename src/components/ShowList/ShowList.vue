@@ -11,7 +11,7 @@
             <img :src="category.bannerUrl">
             <p>{{category.name}}</p>
           </li> 
-        
+         
         </ul>
       </div>
     </div>       
@@ -32,9 +32,7 @@ import {mapState} from 'vuex'
         categoryArr:state=>state.category.categoryArr
       })
     },
-    mounted(){
-      console.log(this.categoryArr[2])
-    }
+    
   }
   
 </script>

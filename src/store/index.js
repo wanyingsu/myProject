@@ -7,6 +7,7 @@ import getters from './getters'
 import user from './modules/user'
 import category from './modules/category'
 import home from './modules/home'
+import search from './modules/search'
 
 
 Vue.use(Vuex)
@@ -18,6 +19,7 @@ export default new Vuex.Store({
   modules:{
     user:user,
     category:category,
-    home:home
+    home:home,
+    search:search
   }
 })

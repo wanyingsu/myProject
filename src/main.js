@@ -8,6 +8,7 @@ import Header from './components/Header/Header.vue'
 import Swiper from './components/Swiper/Swiper.vue'
 import './api/index'
 import './mockData/mockServer'
+import './validate'
 
 
 Vue.config.productionTip = false
