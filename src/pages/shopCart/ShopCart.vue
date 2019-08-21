@@ -19,7 +19,7 @@
       <div class="shopcart_content">
         <img class="shopcartImg" src="https://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/noCart-a8fe3f12e5.png" alt=""/>
         <p>去添加点什么吧</p>
-        <button class="btn" @click="$router.push({path:'/usercenter'})">登录</button>
+        <button class="btn" @click="$router.push({path:'/personal'})">登录</button>
 		  </div>	
 		</div>
 	</div>    

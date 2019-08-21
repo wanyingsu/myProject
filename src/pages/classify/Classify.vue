@@ -39,6 +39,7 @@ import {mapState} from 'vuex'
  
   mounted(){
     this.$store.dispatch("getCategoryData")
+    
     new BScroll(this.$refs.categoryNav, {
           click: true,
           scrollX:false,

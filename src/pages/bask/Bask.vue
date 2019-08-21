@@ -37,14 +37,7 @@ import {mapState} from 'vuex'
    async mounted(){
       await this.$store.dispatch('getComment')
       console.log(this.commentArr)
-      // const comments = this.commentArr
-      //   comments.forEach(item => {
-      //     console.log(item.topics,"item")
-      //     this.topics = item.topics
-      //     console.log(this.topics,"topics")
-      //   });
     }
-
   }
 </script>
 

@@ -9,6 +9,14 @@ import Swiper from './components/Swiper/Swiper.vue'
 import './api/index'
 import './mockData/mockServer'
 import './validate'
+import loading from './common/images/timg (1).gif'
+import VueLazyload from 'vue-lazyload'
+
+//声明使用插件
+Vue.use(VueLazyload, {
+  loading,
+})
+
 
 
 Vue.config.productionTip = false

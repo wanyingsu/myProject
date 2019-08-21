@@ -4,6 +4,7 @@
     <!--主题内容-->
     <div id="homeContainer" v-if="isShow" ref="home">
       <div class="child">
+      <!-- 轮播图 -->
         <Swiper/>
         <!--提示-->
         <div class="home_hint">
@@ -24,10 +25,18 @@
         <HomeProvate/>
         <!-- 限时购 -->
         <HomeShops />
+        <!-- 新品首发 -->
+        <HomeNewOne/>
+        <!-- 众筹 -->
+        <HomeZc/>
+        <!-- 列表展示 -->
+        <ShowList/>
+        <!-- 底部 -->
+        <HomeFooter/>
       </div>
-      <!-- 轮播图 -->
       
     </div>
+    
   </div>
   
 </template>
@@ -40,6 +49,11 @@ import HomeNav from '../../components/home/HomeNav'       //导航列表
 import HomeShopList from '../../components/home/HomeShopList' //商品列表
 import HomeProvate from '../../components/home/HomeProvate'   //私人订制
 import HomeShops from '../../components/home/HomeShops'
+import HomeNewOne from '../../components/home/HomeNewOne'   //新品首发
+import HomeZc from '../../components/home/HomeZc'   //众筹
+import ShowList from '../../components/home/showList'   //展示列表
+import HomeFooter from '../../components/home/HomeFooter'   //展示列表
+
   export default {
     
     computed:{
@@ -57,15 +71,12 @@ import HomeShops from '../../components/home/HomeShops'
       await this.$store.dispatch('getHomeData')
       this.isShow = true
       this.$nextTick(() => {
-        console.log(`mmm`)
         new BScroll(this.$refs.home, {
           click: true,
           scrollX:false,
           scrollY:true
         })
       })
-      
-        console.log(this.$refs.home)
     },
 
   components:{
@@ -73,7 +84,11 @@ import HomeShops from '../../components/home/HomeShops'
     HomeNav,
     HomeShopList,
     HomeProvate,
-    HomeShops
+    HomeShops,
+    HomeNewOne,
+    ShowList,
+    HomeZc,
+    HomeFooter
   },
     
 

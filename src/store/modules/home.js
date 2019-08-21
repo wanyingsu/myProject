@@ -10,7 +10,8 @@ const state = {
   newItemList:[],       //新品首发
   popularItemList:[],    //人气推荐
   topicList:[],         //专题精选
-  zhongChouList:[]      //众筹
+  zhongChouList:[],      //众筹
+  categoryModule:[],    //展示列表
 }
 
 const mutations = {
@@ -24,7 +25,8 @@ const mutations = {
       newItemList,
       popularItemList,   
       topicList,    
-      zhongChouList  
+      zhongChouList,
+      categoryModule  
     } = homeArr
     state.policyDescList = policyDescList
     state.kingKongModule = kingKongModule
@@ -35,6 +37,7 @@ const mutations = {
     state.popularItemList = popularItemList
     state.topicList = topicList
     state.zhongChouList = zhongChouList
+    state.categoryModule = categoryModule
   }
 
 }

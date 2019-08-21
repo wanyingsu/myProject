@@ -7,7 +7,7 @@ const state = {
   categoryArr : [],
   atIndex:0,
   commentArr : [],
-  page:1,
+  page:2,
   size:5,
 }
 
@@ -37,7 +37,7 @@ const actions = {
     let result = await reqComment({page,size})
     // console.log(result)
     const commentArr = result.data.result
-    // console.log(commentArr)
+    console.log(result.data)
     if(result.code==="200"){
       commit(GET_COMMENT_DATA,{commentArr})
     }

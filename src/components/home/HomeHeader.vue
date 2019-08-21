@@ -7,7 +7,7 @@
         <i class="iconfont iconsearch3"></i>
         <span>搜索商品,共21612款好物</span>
       </div>
-      <div class="header_btn">登录</div>
+      <div class="header_btn" @click="$router.push('/personal')">登录</div>
     </div>
     <div class="home_nav" ref="navList">
       <ul class="home_nav_list">

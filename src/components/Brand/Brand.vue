@@ -121,7 +121,13 @@
 </template>
 
 <script type="text/ecmascript-6">
+import {mapState} from 'vuex'
   export default {
+    computed:{
+      ...mapState({
+        commentArr:state=>state.category.commentArr
+      })
+    }
   }
 </script>
 

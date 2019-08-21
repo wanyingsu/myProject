@@ -1,24 +1,24 @@
 <template>
   <div class="home_private">
-        <HomeListHeader :title="title"/>
-        <div class="swiper-container">
-          <ul class="swiper-wrapper">
-            <li class="swiper-slide" v-for="(personals, index) in personalArr" :key="index">
-              <div class="swiper-slideItem" v-for="(personal, index) in personals" :key="index">
-                <img :src="personal.scenePicUrl"/>
-                <div class="swipe_text">
-                  <span>{{personal.name}} </span>
-                  <span class="jiage">¥{{personal.counterPrice}}</span>
-                </div>
-              </div>
-              
-            </li>
-            
-          </ul>
-          <!-- 如果需要分页器 -->
-          <div class="swiper-pagination"></div>
-        </div>
-      </div>
+    <HomeListHeader :title="title"/>
+    <div class="swiper-container" v-if="personalShop.length">
+      <ul class="swiper-wrapper" >
+        <li  class="swiper-slide" v-for="(personals, index) in personalArr" :key="index">
+          <div class="swiper-slideItem" v-for="(personal, index) in personals" :key="index">
+            <img v-lazy="personal.scenePicUrl"/>
+            <div class="swipe_text">
+              <span>{{personal.name}} </span>
+              <span class="jiage">¥{{personal.counterPrice}}</span>
+            </div>
+          </div>
+          
+        </li>
+        
+      </ul>
+      <!-- 如果需要分页器 -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">

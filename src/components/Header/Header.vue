@@ -1,7 +1,7 @@
 <template>
   <div id="header">
     <div class="discover_header">
-      <i class="iconfont iconhome"></i>
+      <div class="iconfont iconhome" @click="$router.push('/home')"></div>
       <slot name="find"></slot>
       <!-- <div class="discover_find">
         <div class="discover_find_left active">发现</div>
