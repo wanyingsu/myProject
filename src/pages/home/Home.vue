@@ -2,8 +2,8 @@
   <div id="home" >
     <HomeHeader/>
     <!--主题内容-->
-    <div id="homeContainer" v-if="isShow" ref="home">
-      <div class="child">
+    <div id="homeContainer" v-if="policyDescList.length" ref="homeList">
+      <div class="child" >
       <!-- 轮播图 -->
         <Swiper/>
         <!--提示-->
@@ -34,7 +34,6 @@
         <!-- 底部 -->
         <HomeFooter/>
       </div>
-      
     </div>
     
   </div>
@@ -48,7 +47,7 @@ import HomeHeader from '../../components/home/HomeHeader'   //头部
 import HomeNav from '../../components/home/HomeNav'       //导航列表
 import HomeShopList from '../../components/home/HomeShopList' //商品列表
 import HomeProvate from '../../components/home/HomeProvate'   //私人订制
-import HomeShops from '../../components/home/HomeShops'
+import HomeShops from '../../components/home/HomeShops'       //限时购
 import HomeNewOne from '../../components/home/HomeNewOne'   //新品首发
 import HomeZc from '../../components/home/HomeZc'   //众筹
 import ShowList from '../../components/home/showList'   //展示列表
@@ -61,17 +60,14 @@ import HomeFooter from '../../components/home/HomeFooter'   //展示列表
         policyDescList:state=>state.home.policyDescList
       })
     },
-  data (){
-    return {
-      isShow:false
-    }
-  },
+ 
 
     async  mounted(){
       await this.$store.dispatch('getHomeData')
-      this.isShow = true
+      // console.log(this.$refs.homeList)
+
       this.$nextTick(() => {
-        new BScroll(this.$refs.home, {
+        new BScroll(this.$refs.homeList, {
           click: true,
           scrollX:false,
           scrollY:true
@@ -103,6 +99,7 @@ import HomeFooter from '../../components/home/HomeFooter'   //展示列表
     height 100%
     #homeContainer
       width 100%
+      height 100%
       padding-top 100px 
       overflow hidden
       box-sizing border-box

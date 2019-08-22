@@ -1,9 +1,9 @@
-<template>
+<template> 
   <div>
     <Login :dataObj="dataObj">
-      <div slot="huoqu" class="get_authCode">
+      <!-- <div slot="huoqu" class="huoqu">
         <span>获取验证码</span>
-      </div>
+      </div> -->
       <div slot="otherOk" class="agree_title">
         <input type="checkbox" class="checkbox">
         <span>我同意</span>

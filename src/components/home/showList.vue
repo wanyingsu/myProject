@@ -2,7 +2,7 @@
   <ul class="showList">
     <li class="showItem" v-for="(category, index) in categoryModule" :key="index">
       <img :src="category.titlePicUrl"/>
-      <div class="showNav">
+      <div class="showNav" ref="navs">
         <ul class="NavList">
           <li class="NavItem" v-for="(item, index) in category.itemList" :key="index">
             <img :src="item.scenePicUrl"/>
@@ -19,13 +19,29 @@
 
 <script type="text/ecmascript-6">
 import {mapState} from 'vuex'
+import BScroll from 'better-scroll'
+
   export default {
     computed:{
       ...mapState({
         categoryModule:state=>state.home.categoryModule
       })
     },
-    
+    mounted(){
+      this.$nextTick(() => {
+        // console.log(this.categoryModule[0].itemList)
+        // console.log(this.$refs.navs)
+        let navLists = this.$refs.navs
+        navLists.forEach((item)=>{
+          new BScroll(item, {
+            click: true,
+            scrollX:true,
+            scrollY:false
+          })
+        })
+        
+      })
+    }
   }
 </script>
 

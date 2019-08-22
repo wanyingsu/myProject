@@ -13,6 +13,7 @@
           v-for="(category, index) in categoryArr" :key="index">{{category.name}}</li>          
         </ul>
       </div>
+      <!-- 右边的列表 -->
       <ShowList :atIndex="atIndex"/>
     </div>
   </div>
@@ -69,6 +70,7 @@ import {mapState} from 'vuex'
     background-color #fff
     display flex
     border-bottom 1px solid #EDEDED
+    z-index 99
     .sortSearch
       margin auto
       width 340px

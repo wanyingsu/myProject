@@ -1,7 +1,7 @@
 import ajax from './ajax'
 
 // const prefix = 'http://m.you.163.com'
-
+const BASE = '/apib'
 const prefix = '/api'
 //发送请求获取评论列表
  export const reqComment = ({page,size}) => ajax({
@@ -9,7 +9,7 @@ const prefix = '/api'
    params:{
     page,
     size
-   }
+   } 
  })
  
 
@@ -26,6 +26,14 @@ const prefix = '/api'
 
 //搜索页默认显示
 export const reqDefalut = ()=>ajax(`${prefix}/xhr/search/init.json`)
+
+
+// 发送短信验证码
+export const reqSendCode = (phone) => ajax({
+  method: 'GET',
+  url: BASE + '/sendcode',
+  params: { phone }
+})
 
 // reqDefalut().then(result=>{
 //   console.log(result)

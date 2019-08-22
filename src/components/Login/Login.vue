@@ -8,16 +8,18 @@
         <img src="https://yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
       </div>
       <div class="phone_login_input_box">
-        <input type="text" :placeholder="dataObj.title" v-model="phone"
-      name="phone" v-validate="'required|mobile'" class="phone_login_input">
-      <span class="hint" v-show="errors.has('phone')">
-        {{ errors.first('phone') }}
-      </span>
+        <input type="text" maxlength="11" :placeholder="dataObj.title" v-model="phone"
+        name="phone" v-validate="'required|mobile'" class="phone_login_input">
+        <i class="iconfont icondanchuangXhao" v-show="phone" @click="phone=''"></i>
+        <span class="hint" v-show="errors.has('phone')">{{ errors.first('phone') }}</span>
 
       </div>
       <div class="email_login_input_box">
-        <input type="text" :placeholder="dataObj.code" class="email_login_input">
-        <slot name="huoqu"></slot>
+        <input type="text" :placeholder="dataObj.code" class="email_login_input" >
+        <!-- <slot name="huoqu" class="huoqu"></slot> -->
+        <div v-show="$route.path==='/phonelogin'" class="huoqu">
+          <span :class="{on:number}" @click="sendTime">{{time>0?`短信已发送(${time}s)`:'获取验证码'}}</span>
+        </div>
       </div>
       <div class="tip_text">
         <span>{{dataObj.wenti}}</span>
@@ -37,15 +39,48 @@
 
 <script type="text/ecmascript-6">
   export default {
+    watch: {
+      phone () {
+        
+      }  
+    },
     data (){
       return {
         phone:'',
+        time:0,  //计时剩余的时间
       }
     },
-
-
+    // ^1(3|4|5|7|8)\d{9}$
     props:{
       dataObj:Object
+    },
+    computed:{
+       number(){
+         return /^1\d{10}$/.test(this.phone)
+       }
+    },
+    methods:{
+    async sendTime(){
+        // console.log()
+        if (this.time || !this.number) {
+          return
+        }
+        this.time = 30
+        const timeId = setInterval(()=>{
+          if(this.time===0){
+              clearInterval(timeId)
+          }else{
+            this.time--
+          }
+        },1000)
+        let result = await reqSendCode(this.phone)
+        if(result.code===0){
+          alert('短信发送成功')
+        }else{
+          this.time=0
+          alert(result.msg)
+        }
+      }
     }
 
   }
@@ -73,6 +108,11 @@
         outline none 
         border-bottom 1px solid #666
         font-size 15px
+      i 
+        position absolute
+        right 40px
+        top 15px
+        font-size 18px
       .hint
         position absolute 
         bottom -17px
@@ -90,7 +130,7 @@
         outline none 
         border-bottom 1px solid #666
         font-size 15px
-      .get_authCode
+      .huoqu
         height 28px      
         position absolute
         right 0
@@ -98,11 +138,13 @@
         margin 0 25px 10px 0
         border 1px solid #333
         span 
-          line-height 14px
+          line-height 28px
           text-align center
           font-size 14px
           color #666
           margin 0 3px 0 3px
+          &.on
+            color red
     .tip_text
       height 22px
       padding 0 19px 22px 18px

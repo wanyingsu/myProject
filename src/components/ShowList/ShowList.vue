@@ -1,5 +1,5 @@
 <template>
-  <div class="contentRight">
+  <div class="contentRight" ref="sort">
     <div class="sortRight" v-if="categoryArr.length">
       <div class="sortbanner">
         <img :src="categoryArr[atIndex].wapBannerUrl">
@@ -19,6 +19,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import BScroll from 'better-scroll'
 import {mapState} from 'vuex'
   export default {
     props:['atIndex'],
@@ -32,6 +33,16 @@ import {mapState} from 'vuex'
         categoryArr:state=>state.category.categoryArr
       })
     },
+    mounted(){
+      // console.log(this.$refs.sort)
+     this.$nextTick(() => {
+        new BScroll(this.$refs.sort, {
+          click: true,
+          scrollX:false,
+          scrollY:true
+        })
+      })
+    }
     
   }
   
@@ -42,6 +53,7 @@ import {mapState} from 'vuex'
   width 300px
   padding 15px 15px 100px
   box-sizing border-box
+  height 100%
   .sortRight
     box-sizing border-box
     .sortbanner

@@ -8,7 +8,8 @@
         <img src="https://yanxuan.nosdn.127.net/bd139d2c42205f749cd4ab78fa3d6c60.png" alt="">
       </div>
       <div class="email_input_box">
-        <input type="text" placeholder="请输入邮箱" class="email_input">
+        <input type="text" placeholder="请输入手机号" class="email_input">
+        <!-- <input v-else type="text" placeholder="请输入邮箱" class="email_input"> -->
       </div>
       <div class="email_password">
         <input type="text" placeholder="请输入密码" class="email_password_input">

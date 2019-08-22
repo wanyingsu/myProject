@@ -14,7 +14,7 @@
           <div class="zc_price">{{item.showRetailPrice}}</div>
           <div class="zc_box">
             <div class="zc_progress">
-              <div class="bg" style="width: 60%;"></div>
+              <div class="bg" :style="{width:item.progress+'%'}"></div>
             </div>
             <div class="zc_percent">{{item.progress}}%</div>
           </div> 

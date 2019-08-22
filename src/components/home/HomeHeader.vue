@@ -52,6 +52,7 @@ import BScroll from 'better-scroll'
   width 100%
   background #fff
   z-index 99
+  padding-bottom 30px 
   .header
     display flex
     width 100%
